@@ -3,6 +3,12 @@ package com.example.processor;
 import java.util.Scanner;
 
 public class PizzaStore {
+    private MealFactory mealFactory;
+
+    public PizzaStore() {
+        this.mealFactory = new MealFactory();
+    }
+
     public static void main(String[] args) {
         PizzaStore pizzaStore = new PizzaStore();
         Scanner scanner = new Scanner(System.in);
@@ -12,16 +18,6 @@ public class PizzaStore {
     }
 
     private Meal order(String mealName) {
-        if (mealName == null) {
-            throw new IllegalArgumentException("Name of the meal is null!");
-        } else if ("Margherita".equals(mealName)) {
-            return new MargheritaPizza();
-        } else if ("Calzone".equals(mealName)) {
-            return new CalzonePizza();
-        } else if ("Tiramisu".equals(mealName)) {
-            return new Tiramisu();
-        } else {
-            throw new IllegalArgumentException("Unknown meal '" + mealName + "'");
-        }
+        return mealFactory.create(mealName);
     }
 }
