@@ -70,6 +70,7 @@ public class FactoryGroup {
 
         writer.emitStatement("throw new IllegalArgumentException(\"Unknown id = \" + id)");
         writer.endMethod();
+        writer.endType();
         writer.close();
     }
 }
